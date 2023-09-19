@@ -10,4 +10,4 @@ dependencies:
   - wget=1.21.4
   - snakemake=7.32.3
   - graphviz=8.1.0
-  - coreutils=9.4
+  - coreutils=8.32
