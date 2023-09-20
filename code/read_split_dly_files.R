@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env Rscript
 
 library(tidyverse)
 library(glue)
@@ -27,7 +27,8 @@ library(glue)
 # QFLAG31    268-268   Character
 # SFLAG31    269-269   Character
 # ------------------------------
-
+tday_julian <- yday(today())
+window <- 30
 quadruple <- function(x) {
   c(glue("VALUE{x}"), glue("MFLAG{x}"), glue("QFLAG{x}"), glue("SFLAG{x}"))
 }
@@ -35,6 +36,7 @@ quadruple <- function(x) {
 
 widths <- c(11, 4, 2, 4, rep(c(5, 1, 1, 1), 31))
 headers <- c("ID", "YEAR", "MONTH", "ELEMENT", unlist(map(1:31, quadruple)))
+
 
 process_xfiles <- function(x) {
     print(x)
