@@ -22,12 +22,12 @@ lat_long_prcp <- inner_join(prcp_data, station_data, by = join_by(id)) %>%
     group_by(latitude, longitude, year) %>%
     summarize(mean_prcp = mean(prcp), .groups = "drop")
 
-end <- case_when(month(buffered_start) != month(buffered_end) ~ format(buffered_end, "%B %-d, %Y"),
-                 month(buffered_start) == month(buffered_end) ~ format(buffered_end, "%-d, %Y"),
+end <- case_when(month(buffered_start) != month(buffered_end) ~ format(buffered_end, "%B %d, %Y"),
+                 month(buffered_start) == month(buffered_end) ~ format(buffered_end, "%d, %Y"),
                  TRUE ~ NA_character_)
 
-start <- case_when(year(buffered_start) != year(buffered_end) ~ format(buffered_start, "%B %-d, %Y"),
-                   year(buffered_start) == year(buffered_end) ~ format(buffered_start, "%B %-d"),
+start <- case_when(year(buffered_start) != year(buffered_end) ~ format(buffered_start, "%B %d, %Y"),
+                   year(buffered_start) == year(buffered_end) ~ format(buffered_start, "%B %d"),
                    TRUE ~ NA_character_)
 
 date_range <- glue("{start} to {end}")
@@ -50,7 +50,7 @@ lat_long_prcp %>%
     ) %>%
     ggplot(aes(longitude, latitude, fill = z_score)) +
     geom_map(data = world_map, aes(map_id = region),
-             map = world_map, fill = NA, color = "#f5f5f5", size = 0.05,
+             map = world_map, fill = NA, color = "#f5f5f5", linewidth = 0.05,
              inherit.aes = FALSE) +
     expand_limits(x = world_map$long, y = world_map$lat) +
     geom_tile() +
