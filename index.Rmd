@@ -1,0 +1,28 @@
+---
+title: Drought Index for World
+output: html_document
+github_repo: https://tsquall121.github.io/drought_reproduce/
+---
+
+```{r echo = FALSE, message = FALSE}
+library(lubridate)
+```
+
+```{css, echo = FALSE}
+.title {
+    display: none;
+}
+.main-container {
+    max-width: 100%
+}
+
+body {
+    background-color: black;
+    color: #f5f5f5;
+    font-size: 1.2vw;
+}
+```
+
+![](visuals/world_drought.png)
+
+Last updated on `r today()`
