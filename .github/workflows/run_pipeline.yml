@@ -1,6 +1,9 @@
 name: Run Drought Index Workflow
 run-name: ${{ github.actor }} is running snakemake workflow🚀
-on: [push] 
+on:
+  push:
+  schedule:
+    - cron: '1 11 * * *'
 jobs:
   Run-Dought-Index-Workflow:
     runs-on: ubuntu-latest
@@ -14,7 +17,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          ls 
+          ls
       - name: Get working directory
         run: |
           pwd
